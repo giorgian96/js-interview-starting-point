@@ -1,7 +1,7 @@
 {
-  "name": "project-name",
-  "version": "0.0.0",
-  "description": "",
+  "name": "coffee-finder",
+  "version": "1.0.0",
+  "description": "An application that allows you to find the nearest coffee shops using a web api",
   "main": "./src/index.js",
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "dev": "nodemon ./src/index.js",
     "test": "jest"
   },
-  "author": "",
+  "author": "Robescu Giorgian Valentin",
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.15.8",
@@ -20,5 +20,7 @@
     "jest": "^27.1.0",
     "nodemon": "^2.0.13"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-fetch": "^3.0.0"
+  }
 }

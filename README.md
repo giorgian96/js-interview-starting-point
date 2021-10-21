@@ -1,26 +1,21 @@
-# Javascript Interview Starting Point
+# Coffee Finder
 
-This repo will serve as a starting point for your code challenge. Feel free to change anything in order to complete it: Add modules, other tests, new packages etc.
+This application allows you to find the three nearest coffee shops.
 
-## Steps
+## Usage
 
-- Fork this repo
-- Clone your fork
-- Finish the exercise
-- Push your best work
+The program will be executed directly from the command line and will be provided two arguments in the following order: `<user latitude> <user longitude>`
 
-## Commands
+## Example
+
+__Input:__
+
+`yarn start 47.6 -122.4`
+
+__Output:__
 
 ```
-yarn run start  # Run the main script
-         dev    # Start development mode 
-         test   # Test the code
-````
-## Tools
-
-- Write modern JS with [babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
-- Test your code with [jest](https://www.npmjs.com/package/jest)
-
----
-
-Good luck!
+Starbucks Seattle2, 0.0645
+Starbucks Seattle, 0.0861
+Starbucks SF, 10.0793
+```
