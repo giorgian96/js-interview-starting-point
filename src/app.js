@@ -15,15 +15,31 @@ let keyRefreshed = false;
  * @returns {Array<position>}
  */
 export async function getNearestShops(position) {
-  let nearestShops = await getCoffeeShops();
+  let coffeeShops = await getCoffeeShops();
+  let distanceToCoffeeShops = [];
 
-  if (nearestShops.length > 0) {
-    for(const coffeeShop of nearestShops){
-      console.log(coffeeShop);
+  if (coffeeShops.length > 0) {
+    for (const coffeeShop of coffeeShops) {
+      distanceToCoffeeShops.push({
+        name: coffeeShop.name,
+        distance: (Math.sqrt((coffeeShop.x - position.x) ** 2 + (coffeeShop.y - position.y) ** 2)).toFixed(4)
+      });
     }
+
+    distanceToCoffeeShops = distanceToCoffeeShops.sort(compareDistances).slice(0, 3);
   }
 
-  return [];
+  return distanceToCoffeeShops;
+}
+
+function compareDistances(a, b) {
+  if (parseFloat(a.distance) < parseFloat(b.distance)) {
+    return -1;
+  } else if (parseFloat(a.distance) > parseFloat(b.distance)) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 async function getCoffeeShops() {
@@ -38,10 +54,10 @@ async function getCoffeeShops() {
       console.log("Getting a new token and trying again...");
       apiKey = await retrieveNewToken();
 
-      if(apiKey !== ''){
+      if (apiKey !== '') {
         keyRefreshed = true;
         return await getCoffeeShops();
-      }      
+      }
     } else {
       console.log("Data could not be retrieved, please wait a few seconds and try again.");
       return [];
