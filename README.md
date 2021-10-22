@@ -6,16 +6,18 @@ This application allows you to find the three nearest coffee shops.
 
 The program will be executed directly from the command line and will be provided two arguments in the following order: `<user latitude> <user longitude>`
 
+The `<user latitude>` must be a number between -90 and 90, also the `<user longitude>` must be a number between -180 and 180.
+
 ## Example
 
 __Input:__
 
-`yarn start 47.6 -122.4`
+`yarn start 45.77 24.15`
 
 __Output:__
 
 ```
-Starbucks Seattle2, 0.0645
-Starbucks Seattle, 0.0861
-Starbucks SF, 10.0793
+Blue Bottle Moscow, 16.7454
+Blue Bottle Rio De Janeiro, 96.2254
+Blue Bottle Seattle, 146.4772
 ```
