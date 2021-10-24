@@ -4,7 +4,6 @@ import fetch from "node-fetch";
 const BASE_API_URL = 'https://blue-bottle-api-test.herokuapp.com';
 const GET_COFFEE_SHOPS = '/v1/coffee_shops';
 const GET_TOKEN = '/v1/tokens';
-let apiKey = '';
 let keyRefreshed = false;
 
 /**
@@ -37,8 +36,10 @@ export async function getNearestShops(position) {
   return distanceToCoffeeShops;
 }
 
-async function getCoffeeShops() {
-  apiKey = await retrieveNewToken();
+async function getCoffeeShops(apiKey = '') {
+  if(apiKey === ''){
+    apiKey = await retrieveNewToken();
+  }  
 
   console.log("Getting the coffee shops...");
   let response = await fetch(`${BASE_API_URL}${GET_COFFEE_SHOPS}?token=${apiKey}`);
@@ -54,7 +55,7 @@ async function getCoffeeShops() {
 
       if (apiKey !== '') {
         keyRefreshed = true;
-        return await getCoffeeShops();
+        return await getCoffeeShops(apiKey);
       }
     } else {
       console.log("Data could not be retrieved, please wait a few seconds and try again.");
